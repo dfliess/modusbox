@@ -1,0 +1,35 @@
+version: '3.7'
+
+services:
+    influxdb:
+        image: influxdb:latest
+        container_name: influxdb
+        ports:
+          - "8083:8083"
+          - "8086:8086"
+          - "8090:8090"
+        # env_file:
+        #   - 'env.influxdb'
+        container_name: influx1
+        volumes:
+          # Data persistency
+          # sudo mkdir -p /srv/docker/influxdb/data
+          - /srv/docker/influxdb/data:/var/lib/influxdb
+    redis:
+      image: redis
+      container_name: cache
+      ports:
+        - "6379:6379"
+    app:
+      build:
+        context: .
+        dockerfile: Dockerfile
+      ports:
+          - "3000:3000"
+      depends_on:
+        - redis
+        - influxdb
+      restart: always
+      environment:
+        - REDIS_URL=redis://cache
+        - INFLUX_HOST=influx1

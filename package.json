@@ -1,0 +1,28 @@
+{
+  "name": "modusbox-stock",
+  "version": "1.0.0",
+  "description": "Create .env FILE or set ENVIRONMENT variables as specified .env.exmaple",
+  "main": "index.js",
+  "scripts": {
+    "start": "node .",
+    "dev": "nodemon -i \"*.test.js\" .",
+    "lint": "eslint .",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Diego A. Fliess",
+  "license": "ISC",
+  "private": true,
+  "dependencies": {
+    "async-redis": "^1.1.7",
+    "bluebird": "^3.7.2",
+    "body-parser": "^1.19.0",
+    "compression": "^1.7.4",
+    "cors": "^2.8.5",
+    "dotenv-safe": "^8.2.0",
+    "express": "^4.17.1",
+    "helmet": "^3.21.2",
+    "influx": "^5.5.1",
+    "log4js": "^6.1.2",
+    "morgan": "^1.9.1"
+  }
+}
